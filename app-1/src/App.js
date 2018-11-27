@@ -1,33 +1,57 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-//Components
-import TextBox from './TextBox';
+import React, { Component } from "react";
+import "./App.css"
 
 class App extends Component {
+
   constructor() {
     super();
+
     this.state = {
-      userInput: ""
+      input: ""
     }
+
     this.updateInput = this.updateInput.bind(this);
   }
 
   updateInput(val) {
     this.setState({
-      userInput: val
+      input: val
     })
-  } 
+  }
 
   render() {
-    const { userInput } = this.state;
     return (
-      <TextBox 
-        input={userInput} 
-        updateTextBox={this.updateInput}
-      />
+      <div className="App">
+        <input onChange={e => this.updateInput(e.target.value)} type="text"></input>
+        <p>{this.state.input}</p>
+      </div>
     )
   }
+
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

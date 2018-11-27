@@ -1,20 +1,39 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
+
   constructor() {
     super();
+
     this.state = {
-      myArray: ["Bacon", "Cheese", "Avocado", "Ice Cream", "Pizza"]
+      foods: ["bacon", "cheese", "avocado", "eggs"]
     }
   }
+
   render() {
-    const { myArray } = this.state;
-    let arrayListItems = myArray.map((el) => <h2 key={el.toString()}> {el} </h2>)
+    
+    const { foods } = this.state;
+    let foodsToDisplay = foods.map((el, i) => {
+      return <h2 key={i}> {el} </h2>
+    })
+
     return (
-      <ul className="App">{arrayListItems}</ul>
-    );
+      <div className="App">
+        {foodsToDisplay}
+      </div>
+    )
   }
+
 }
 
 export default App;
+
+
+
+
+
+
+
+
+

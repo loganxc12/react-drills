@@ -1,33 +1,64 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
+
   constructor() {
     super();
+
     this.state = {
-      foods: ["Bacon", "Cheese", "Avocado", "Ice Cream", "Pizza"],
-      userInput: ""
-    }
+      foods: ["cheese", "bacon", "avocado", "toast"],
+      input: ""
+    }  
+
     this.updateInput = this.updateInput.bind(this);
   }
 
-  updateInput(e) {
+  updateInput(val) {
     this.setState({
-      userInput: e.target.value
+      input: val
     })
   }
 
   render() {
-    const { foods, userInput } = this.state;
-    let filteredFoods = foods.filter((el, i) => el.toLowerCase().startsWith(userInput.toLowerCase()));
-    let foodsToDisplay = filteredFoods.map((el, i) => <h2 key={i}> {el} </h2>);
+    const { foods, input } = this.state;
+    let foodsToDisplay = foods.filter(el => {
+      return el.toLowerCase().startsWith(input.toLowerCase())
+    }).map((el, i) => {
+      return <h2 key={i}>{el}</h2>
+    })
+
     return (
       <div className="App">
-        <input onChange={this.updateInput}></input>
+        <input onChange={e => this.updateInput(e.target.value)}></input>
         {foodsToDisplay}
       </div>
-    );
+    )
   }
+
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
